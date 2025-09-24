@@ -7,6 +7,7 @@ import penguins from "../assets/penguins.json";
 
 <Layout>
   <h1 class="text-2xl">Test Astro et Plot (Observablehq)</h1>
+  <div id="myplot"></div>
   <PlotFigure
     options={{
       marks: [
@@ -19,3 +20,13 @@ import penguins from "../assets/penguins.json";
     }}
   />
 </Layout>
+
+<script>
+
+import * as Plot from "@observablehq/plot";;
+
+const plot = Plot.rectY({length: 10000}, Plot.binX({y: "count"}, {x: Math.random})).plot();
+const div = document.querySelector("#myplot");
+div.append(plot);
+
+</script>
