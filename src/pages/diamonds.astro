@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <h1 class="text-2xl">Test Astro et Plot (Observablehq)</h1>
+<select name="color" id="color">
+  <option value="">All colors</option>
+  <option value="D">D</option>
+  <option value="E">E</option>
+  <option value="F">F</option>
+  <option value="I">I</option>
+  <option value="J">J</option>
+</select>
+<select name="cut" id="cut">
+  <option value="">All cuts</option>
+  <option value="Ideal">Ideal</option>
+  <option value="Premium">Premium</option>
+  <option value="Very Good">Very Good</option>
+  <option value="Good">Good</option>
+  <option value="Fair">Fair</option>
+</select>
+  <div id="myplot"></div>
+  </Layout>
+
+<script>
+
+
+    import * as Plot from "@observablehq/plot";
+    import diamonds from "../assets/diamonds.json";
+
+
+    const selectColor = document.getElementById("color");
+    const selectCut = document.getElementById("cut");
+
+    function renderPlot() {
+
+        const color = selectColor.value;
+        const cut = selectCut.value;
+
+        
+        const plotDiv = document.getElementById("myplot");
+ 
+        
+        plotDiv.innerHTML = "";
+ 
+       
+        const plot = Plot.plot({
+            marks: [
+               
+                Plot.dot(diamonds, {
+                    x: "depth",
+                    y: "carat",
+                    stroke: "color",
+                    filter: (d) => 
+                    (!color || d.color === color) && 
+                    (!cut || d.cut === cut),
+                }),
+            ],
+        });
+       
+        plotDiv.appendChild(plot);
+    }
+
+   
+    selectColor.addEventListener("change", renderPlot);
+    selectCut.addEventListener("change", renderPlot);
+
+  
+    renderPlot();
+</script>

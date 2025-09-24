@@ -56,7 +56,7 @@ import Layout from "../layouts/Layout.astro";
                 Plot.dot(penguins, {
                     x: "culmen_length_mm", // Axe X : longueur du bec
                     y: "culmen_depth_mm", // Axe Y : profondeur du bec
-                    stroke: "species", // Couleur selon l'espèce
+                    stroke: "species", // Couleur selon l'espèce^
                     filter: (d) => 
                     (!species || d.species === species) && 
                     (!island || d.island === island) &&

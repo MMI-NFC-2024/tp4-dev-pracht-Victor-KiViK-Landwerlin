@@ -12,6 +12,16 @@ import "../styles/global.css";
     <title>Astro Basics</title>
   </head>
   <body>
+    <header>
+      <nav class="p-4 border-b border-gray-300">
+        <a href="/" class="mr-4">Home</a>
+        <a href="/simple_penguins" class="mr-4">juste les penguins</a>
+        <a href="/filtre_penguins" class="mr-4">juste un filtre par especes</a>
+        <a href="/filtres_penguins" class="mr-4">tout les filtres</a>
+        <a href="/diamonds" class="mr-4">diamonds</a>
+        <a href="/boursier" class="mr-4">boursier</a>
+      </nav>
+    </header>
     <slot />
   </body>
 </html>
